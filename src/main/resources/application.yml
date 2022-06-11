@@ -1,0 +1,35 @@
+server:
+  port: 8080
+  error:
+    whitelabel:
+      enabled: false
+
+spring:
+  name: document-store
+  gson:
+    serialize-nulls: false
+  servlet:
+    multipart:
+      max-file-size: 3MB
+      max-request-size: 3MB
+  application:
+    http:
+      converters:
+        preferred-json-mapper: gson
+  datasource:
+    driverClassName: ${DRIVER_CLASS_NAME:org.postgresql.Driver}
+    url: ${POSTGRES_URL:jdbc:postgresql://localhost:5432/postgres}
+    username: ${POSTGRES_USER:postgres}
+    password: ${POSTGRES_PASSWORD:postgres}
+    hikari:
+      maximum-pool-size: 50
+      minimum-idle: 10
+  jpa:
+    #    properties:
+    #      hibernate:
+    #        format_sql: true
+    hibernate:
+      ddl-auto: update
+    open-in-view: true
+    database-platform: "${SPRING_JPA_DATABASE_PLATFORM:org.hibernate.dialect.PostgreSQLDialect}"
+  #    generate-ddl: false
