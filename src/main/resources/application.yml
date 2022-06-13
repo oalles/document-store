@@ -33,3 +33,28 @@ spring:
     open-in-view: true
     database-platform: "${SPRING_JPA_DATABASE_PLATFORM:org.hibernate.dialect.PostgreSQLDialect}"
   #    generate-ddl: false
+
+camel:
+  springboot:
+    main-run-controller: true
+  component:
+    debezium-postgres:
+      table-whitelist: public.documents,documents
+      database-dbname: postgres
+      database-hostname: ${POSTGRES_HOSTNAME:localhost}
+      database-port: 5432
+      database-user: ${POSTGRES_USER:postgres}
+      database-password: ${POSTGRES_PASSWORD:postgres}
+      offset-storage: org.apache.kafka.connect.storage.MemoryOffsetBackingStore
+      database-server-name: localPG
+      table-include-list: public.documents,documents
+      schema-include-list: public
+      include-unknown-datatypes: true
+      bridge-error-handler: true
+      enabled: true
+      offset-commit-policy: io.debezium.embedded.spi.OffsetCommitPolicy$PeriodicCommitOffsetPolicy
+
+logging:
+  level:
+    es.omarall: DEBUG
+    io.debezium.embedded: INFO

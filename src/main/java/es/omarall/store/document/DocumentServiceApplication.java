@@ -22,7 +22,6 @@ public class DocumentServiceApplication {
     @Bean
     Gson gson() {
         final GsonBuilder builder = new GsonBuilder();
-//        builder.registerTypeAdapter(UUID.class, new UUIDConverter());
         builder.serializeSpecialFloatingPointValues();
         return builder.create();
     }

@@ -15,8 +15,14 @@
 		<revision>latest</revision>
 		<jib-maven-plugin.version>3.2.1</jib-maven-plugin.version>
 		<jib.skip>false</jib.skip>
+		<camel.version>3.17.0</camel.version>
 	</properties>
 	<dependencies>
+		<dependency>
+			<groupId>org.apache.camel.springboot</groupId>
+			<artifactId>camel-debezium-postgres-starter</artifactId>
+			<version>${camel.version}</version>
+		</dependency>
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
