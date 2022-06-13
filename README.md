@@ -16,5 +16,14 @@ $ docker-compose -f deployment/docker-compose.yaml up
 # Next Steps
 The goal is to be able to build an integration using Debezium Embedded engine so we can express some pipeline logic when a document has been inserted. 
 
+## Added Camel Debebeziuum Postgresql
+
+> wrapper around Debezium using Debezium Embedded, which enables Change Data Capture from PostgresSQL database using Debezium without the need for Kafka or Kafka Connect
+
+For the sake of simplicity, Camel logic is built in the same project. But the document store could be seen as a legacy system. 
+
+`CDCRouteBuyilder` shows how to capture a `Create` operation in the `documents` table. The created document data is parsed using [Apache Tika](https://tika.apache.org/) in order to get document metadata.
+
+
 
 
